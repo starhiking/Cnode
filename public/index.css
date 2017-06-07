@@ -1,0 +1,120 @@
+body{
+    background-color: #e1e1e1;
+}
+#head{
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: #333;
+    color: #ccc;
+    font-size: 2em;
+    border: 1px solid #f0f0f0;
+}
+#type{
+    z-index:5;
+    position: fixed;
+    top:7%;
+    left: 0;
+    background: #ccc;
+    width: 50%;
+    height: 400px;
+    display: none;
+}
+#type ul{
+    margin-top:15%;
+    font-size: 1.7em;
+    line-height: 2em;
+    padding: 2px;
+
+}
+#type li{
+    width: 100%;
+    list-style-type:none;
+}
+#from{
+    font-size: 1.3em;
+    bottom:0;
+    float: left;
+}
+#colorHead{
+    width: 100%;
+    height: 2px;
+    background-color: #e1e1e1;
+}
+#addButton,#typeButton{
+    margin-top:2%; 
+}          
+#content{
+    background: #fff;
+    margin-top: 18%;
+}
+#content a:hover,#content a:visited,#content a:link,#content a:active,#content a{
+    text-decoration: none;
+    color: #333;
+}
+@media (min-width: 460px) { 
+    #head{
+        position:static;
+    }
+    #content{
+        margin-top: 1%;
+    }
+ }
+.contentHead{
+    margin-top: 2%;
+    width: 85%;  /*必须设置宽度*/
+    overflow: hidden;  /*溢出隐藏*/
+    text-overflow: ellipsis; /*以省略号...显示*/
+    white-space: nowrap;  /*强制不换行*/
+}
+.contentFoot{
+    width: 100%;
+}
+.Topic{
+   border: 1px solid #f0f0f0;
+}
+.top,.good{
+    background: #80bd01;
+    color: #fff;
+    margin: 2%;
+}
+.share,.ask,.job{
+    background-color: #e1e1e1;
+    color: rgba(0, 0, 0, 0.48);
+    margin:2%;
+}
+.avatar{
+    margin: 3% 1% 0 3%;
+}
+.CreateInfo{
+    font-size:0.8em;
+    margin: 2% auto;
+    left:-2%;
+    font-family: 微软雅黑;
+    color:rgba(0, 0, 0, 0.48);
+}
+.VisitInfo{
+    right: -2em;
+    font-family: 微软雅黑;
+    margin: 2% auto;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.48);
+}
+.Reply{
+    color: #C93;
+}
+.Number,.LastReply{
+    float: right;
+    word-break:keep-all;
+}
+#canva{
+    position: fixed;
+    filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.5; /*Firefox私有，透明度50%*/
+    opacity:0.5;/*其他，透明度50%*/
+    background: #e1e1e1;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: none;
+}

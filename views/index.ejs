@@ -1,0 +1,26 @@
+<% include head %>
+        <div id="content" class="row">
+         <% topics.forEach((topic)=>{ %>
+          <a><div class="Topic">
+              <div class="contentHead">
+                <span class="<%= topic.class %>">&nbsp;<%= topic.nature %> </span>
+                <span class="Title"><%= topic.title %></span>
+              </div>
+              <div class="contentFoot row ">
+                <img class="avatar col-xs-2 img-responsive img-circle" src="<%=topic.author.avatar_url%>">
+                <div class="col-xs-7 CreateInfo">
+                    <span class="Author"><%= topic.author.loginname %></span><br>
+                    <span class="CreateTime">创建于：<%=topic.re_create_at%></span>
+                </div>
+                <div class="col-xs-2 VisitInfo" style="width:20%">
+                  <div class="Number">
+                    <span class="Reply"><%= topic.reply_count %></span>/<span class="Visit"><%= topic.visit_count %></span>
+                  </div><br>
+                  <span class="LastReply">11小时前</span>
+                </div>
+                </div>
+            </div></a>
+         <% }) %>
+        </div>
+      </div>
+<% include foot %>

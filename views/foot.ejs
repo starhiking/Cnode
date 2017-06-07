@@ -1,0 +1,69 @@
+
+    <script src="jquery.min.js"></script>
+    <script>
+      var page = 1;canLoad=true;
+
+      $(document).ready(function () {
+          $("#typeButton").on('click',function(){
+              $("#type").toggle();
+              $('#canva').toggle();
+          });
+          $('#canva').on('click',function(){
+              $("#type").toggle();
+              $('#canva').toggle();
+          });
+          $(window).scroll(function(){
+            if($(window).scrollTop()+$(window).height()>=$(document).height()&&canLoad){
+                  ajaxLoad();
+              }
+          });
+      });
+      function insertContent(data){
+        var html = '';
+        for(var i = 0; i < data.length; i++ ){
+          var topic = data[i];
+          html +=
+          '<a><div class="Topic">'+
+              '<div class="contentHead">'+
+                '<span class='+topic.class+'>&nbsp;'+topic.nature+' </span>'+
+                '<span class="Title">'+topic.title+'</span>'+
+              '</div>'+
+              '<div class="contentFoot row ">'+
+                '<img class="avatar col-xs-2 img-responsive img-circle" src='+topic.author.avatar_url+'>'+
+                '<div class="col-xs-7 CreateInfo">'+
+                    '<span class="Author">'+topic.author.loginname+'</span><br>'+
+                    '<span class="CreateTime">创建于：'+topic.re_create_at+'</span>'+
+                '</div>'+
+                '<div class="col-xs-2 VisitInfo" style="width:20%">'+
+                  '<div class="Number">'+
+                    '<span class="Reply">'+topic.reply_count+'</span>/<span class="Visit">'+topic.visit_count+'</span>'+
+                  '</div><br>'+
+                  '<span class="LastReply">11小时前</span>'+
+                '</div>'+
+                '</div>'+
+            '</div></a>';
+        } 
+        $("#content").append(html);
+      }
+
+      function ajaxLoad(){
+        canLoad=false;
+        page++;
+        $.ajax({
+          type:'get',
+          url : '/ajax?tab='+'<%= tab %>'+'&page='+page,
+          dataType:'json',
+          success:function(data){
+            if(data.length==0){
+              alert("已经没有元素啦!");
+            } else{
+              insertContent(data);
+              canLoad = true;
+            }
+          }
+        });
+      }
+
+    </script>
+  </body>
+</html>
