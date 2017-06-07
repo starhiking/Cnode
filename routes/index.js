@@ -19,8 +19,8 @@ Date.prototype.Format = function (fmt) { //author: meizz
 function dealData(reData){
   for(let i = 0;i< reData.length ; i++ ){
       let temp = reData[i];
+      temp.content = '';
       temp.re_create_at= new Date(reData[i].create_at).Format("yyyy-MM-dd hh:mm");
-      
       if(temp.top){
         temp.nature='置顶';
         temp.class = 'top'
