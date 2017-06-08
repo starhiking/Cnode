@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Cnode社区</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+      <div class="container">
+          
+        <div id="head" class="row">
+            <div id="colorHead"></div>
+            <div class="col-xs-2 back"  id="typeButton"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
+            <a href="/"><img class="col-xs-6 col-xs-offset-1" src="/images/cnodejs_light.svg"></a>
+            <div class="col-xs-2 col-xs-offset-1" id="addButton"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></div>
+        </div>
+
+
+
+      </div>
+    <script src="jquery.min.js"></script>
+    <script>
+         $(document).ready(function () {
+            $('.back').on('click',function(){
+                window.history.back();
+            });
+        });
+    </script>
+    </body>
+</html>
