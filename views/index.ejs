@@ -1,7 +1,7 @@
 <% include head %>
         <div id="content" class="row">
          <% topics.forEach((topic)=>{ %>
-          <a><div class="Topic">
+          <a href="/topic?id=<%= topic.id %>"><div class="Topic">
               <div class="contentHead">
                 <span class="<%= topic.class %>">&nbsp;<%= topic.nature %> </span>
                 <span class="Title"><%= topic.title %></span>

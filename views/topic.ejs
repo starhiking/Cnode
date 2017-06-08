@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Cnode社区</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+      <div id="canva"></div>
+      <div class="container">
+
+        <div id="head" class="row">
+            <div id="colorHead"></div>
+            <div class="col-xs-2 back"  id="typeButton"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
+            <a href="/"><img class="col-xs-6 col-xs-offset-1" src="/images/cnodejs_light.svg"></a>
+            <div class="col-xs-2 col-xs-offset-1" id="addButton"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></div>
+        </div>
+
+        <div class="topicHead">
+            <h3 class="topicTitle"><%= data.title %></h3>
+            <div class="row topicAuthorInfo">
+                <img class="col-xs-2 img-responsive" src="<%= data.author.avatar_url %>">
+                <span class="topicAuthor col-xs-2"><%= data.author.loginname %></span>
+                <div class="clo-xs-2"><span id="topicTime">11小时前</span></div>
+            </div>
+            <div class="topicContent">
+                <%- data.content %>
+            </div>
+            <div class="replyContents">
+                <div class="replyCount">
+                    <%= data.reply_count %>条回复
+                </div>
+                <% for(var i = 0 ;i < data.replies.length; i++ ){ var reply = data.replies[i]; %>
+                <div class="replyContent">
+                    <div class="row">
+                        <img class="col-xs-3 img-responsive img-circle replyAvatar" src="<%= reply.author.avatar_url %>">
+                        <div class="col-xs-6 replyInfo">
+                            <strong><%= reply.author.loginname %></strong><br><span class="floor"><%- i+1 %>楼</span> &nbsp;11小时前
+                        </div>
+                        <div class="col-xs-1 findMe">
+                            <span class="glyphicon glyphicon-log-in " aria-hidden="true" >
+                        </div>
+                    </div>
+                    <div class="replyText">
+                        <%- reply.content %>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+      </div>
+    <script src="jquery.min.js"></script>
+    <script>
+         $(document).ready(function () {
+            $('.back').on('click',function(){
+                window.history.back();
+            });
+        });
+    </script>
+    </body>
+</html>

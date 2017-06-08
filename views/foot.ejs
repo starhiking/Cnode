@@ -23,7 +23,7 @@
         for(var i = 0; i < data.length; i++ ){
           var topic = data[i];
           html +=
-          '<a><div class="Topic">'+
+          '<a href="/topic?id='+topic.id+'"'+'><div class="Topic">'+
               '<div class="contentHead">'+
                 '<span class='+topic.class+'>&nbsp;'+topic.nature+' </span>'+
                 '<span class="Title">'+topic.title+'</span>'+

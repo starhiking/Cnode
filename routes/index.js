@@ -42,13 +42,17 @@ function dealData(reData){
       else if(temp.tab=='job'){
         temp.nature = '招聘';
         temp.class = 'job';
+      }
+      else{
+        temp.nature = '其他';
+        temp.class = 'other';
       } 
   }
   return reData;
 }
 
 module.exports = (app)=>{
-
+  //主页分页请求
   app.get('/',(req,res)=>{
     if(!req.query.tab) req.query.tab = '';
     https.get('https://cnodejs.org/api/v1/topics?limit=15&mdrender=true&tab='+req.query.tab,(response)=>{
@@ -67,7 +71,7 @@ module.exports = (app)=>{
     });
   });
 
-
+  //处理下滑ajax加载
   app.get('/ajax',(req,res)=>{// /ajax?page=3&tab=share
       https.get('https://cnodejs.org/api/v1/topics?limit=15&mdrender=true&tab='+req.query.tab+'&page='+req.query.page,(response)=>{
       let data = null;
@@ -83,6 +87,31 @@ module.exports = (app)=>{
         }
       });
     });
-
   });
+  //处理topic请求 id单页
+  app.get('/topic',(req,res)=>{
+    let id = req.query.id;
+    https.get('https://cnodejs.org/api/v1/topic/'+id,(response)=>{
+      let data = null;
+      let html = '';
+      response.on('data',(chunk)=>{
+        response.setEncoding('utf8');
+        html+=chunk;
+      });
+      response.on('end',()=>{
+        data = JSON.parse(html);
+        if(data.success == true){
+          // res.send(JSON.stringify(dealData(data.data)));
+          res.render('topic',{data:data.data});
+
+        }
+      });
+    });
+  });
+
+  app.get('/user/:id',(req,res)=>{
+    console.log(req.params.id);
+    res.render(req.params.id);
+  })
+
 }

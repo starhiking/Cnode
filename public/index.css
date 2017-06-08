@@ -78,7 +78,7 @@ body{
     color: #fff;
     margin: 2%;
 }
-.share,.ask,.job{
+.share,.ask,.job,.other{
     background-color: #e1e1e1;
     color: rgba(0, 0, 0, 0.48);
     margin:2%;
@@ -117,4 +117,74 @@ body{
     width: 100%;
     height: 100%;
     display: none;
+}
+.topicHead{
+    margin-top: 18%;
+}
+.topicTitle{
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 98%;
+    line-height: 130%;
+    
+}
+.topicAuthorInfo{
+    height: 32px;
+    white-space: nowrap;
+}
+#topicTime{
+    float: right;
+    margin-right: 6%; 
+}
+.topicAuthor{
+    margin: 1% auto;
+    left: -5%;
+    font-weight: 700;
+    color: #26609a;
+}
+.topicContent{
+    margin-top: 3%;
+    max-width: 100%;
+    overflow: hidden;
+}
+img{
+    max-width: 100%;
+}
+.replyContents{
+    margin-top: 2%;
+    /*background: #f0f0f0;*/
+    
+}
+.replyCount{
+
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 1% ;
+}
+.replyContent{
+    border-top-style:ridge;
+}
+.findMe{
+    margin:3.5% auto;
+    font-size: 1.5em;
+}
+.replyInfo{
+    margin:2.8% auto;
+}
+.replyText{
+    color: rgba(0, 0, 0, 0.55);
+    margin-left: 3%;
+    overflow:scroll;
+}
+.replyAvatar{
+    margin:2%;
+}
+.floor{
+    color: rgba(138, 109, 59, 0.81)
+}
+code,.prettyprint{
+    overflow: scroll;
 }
