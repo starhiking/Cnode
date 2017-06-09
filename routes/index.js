@@ -111,7 +111,7 @@ module.exports = (app)=>{
 
   app.get('/user/:id',(req,res)=>{
     console.log(req.params.id);
-    res.render(req.params.id);
+    res.send(req.params.id);
   })
 
 }
