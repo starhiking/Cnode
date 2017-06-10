@@ -110,14 +110,9 @@ module.exports = (app)=>{
   });
 
 
-  app.get('/user/:id',(req,res)=>{
-    console.log(req.params.id);
-    res.send(req.params.id);
-  })
-
 //bug在这
   app.get('/user/:name',(req,res)=>{
-    console.log(req.params);
+    // console.log(req.params);
     // let name = req.params.name;
     res.render('user');
   });
