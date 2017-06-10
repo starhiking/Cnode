@@ -103,7 +103,6 @@ module.exports = (app)=>{
         if(data.success == true){
           // res.send(JSON.stringify(dealData(data.data)));
           res.render('topic',{data:data.data});
-
         }
       });
     });
