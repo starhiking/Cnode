@@ -8,9 +8,14 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/index.css" rel="stylesheet">
   </head>
+  <style>
+    a{
+        text-decoration: none;
+        color: #333;
+    }
+  </style>
   <body>
       <div class="container">
-          
         <div id="head" class="row">
             <div id="colorHead"></div>
             <div class="col-xs-2 back"  id="typeButton"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
@@ -18,8 +23,72 @@
             <div class="col-xs-2 col-xs-offset-1" id="addButton"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></div>
         </div>
 
-
-
+        <div class="row userInformation">
+            <img src="<%= user.avatar_url%>" class="img-responsive img-circle authorAvatar col-xs-4 col-xs-offset-4">
+            <div class="col-xs-offset-3 col-xs-6 authorText">
+                <span class="authorName"><%= user.loginname %></span><br>
+                <% if(user.githubUsername){ %>
+                <a class="authorEmail" href="https://<%= user.githubUsername %>@github.com" style="color:#967c7c"><%= user.githubUsername %>@github.com</a>
+                <% }%>
+            </div>
+            <div class="col-xs-12">
+                <span style="float:left">
+                    注册时间：<%= user.create_at %>
+                </span>
+                <span style="float:right">
+                    积分：<%= user.score %>
+                </span>
+            </div>
+            <div class="col-xs-4 userButton" id="recentReply">
+                最近回复
+            </div>
+            <div class="col-xs-4 userButton" id="recentTopic">
+                最新发布
+            </div>
+            <div class="col-xs-4 userButton" id="collectTopic">
+                话题收藏
+            </div>
+                <% user.recent_replies.forEach((reply)=>{ %>
+                <a href="/topic?id=<%= reply.id%>"><div class="col-xs-12 row userReply recentReply">
+                    <object><a href="/user/<%= reply.author.loginname %>"><img src="<%= reply.author.avatar_url %>" class="col-xs-3 img-responsive img-circle "></a></object>
+                    <div class="col-xs-9 userReplyContent">
+                        <div class="userReplyTitle">
+                           <%= reply.title %>
+                        </div>
+                        <div style="float:left">
+                            <%= reply.author.loginname %>
+                        </div>
+                        <div style="float:right">
+                            1分钟前
+                        </div>
+                    </div>
+                    <hr style=" height:2px;border:none;border-top:2px dotted #185598;" class="col-xs-10 col-xs-offset-1" />
+                </div></a>
+                
+                <% }) %> 
+                <% user.recent_topics.forEach((reply)=>{ %>
+                <a href="/topic?id=<%= reply.id%>">
+                    <div class="col-xs-12 row userReply recentTopic">
+                        <object><a href="/user/<%= reply.author.loginname %>">
+                            <img src="<%= reply.author.avatar_url %>" class="col-xs-3 img-responsive img-circle ">
+                        </a></object>
+                        <div class="col-xs-9 userReplyContent">
+                            <div class="userReplyTitle">
+                                <%= reply.title %>
+                            </div>
+                            <div style="float:left">
+                                <%= reply.author.loginname %>
+                            </div>
+                            <div style="float:right">
+                                1分钟前
+                            </div>
+                            
+                        </div>
+                        <hr style="height:2px;border:none;border-top:2px dotted #185598;" class="col-xs-10 col-xs-offset-1" />
+                    </div>
+                </a> 
+                <% }) %> 
+        </div>
       </div>
     <script src="/jquery.min.js"></script>
     <script>
@@ -27,6 +96,64 @@
             $('.back').on('click',function(){
                 window.history.back();
             });
+            $('#recentReply').on('click',function(){
+                $('.recentTopic').css('display','none');
+                $('.collectTopic').css('display','none');
+                $('.recentReply').css('display','block');
+            });
+            $('#recentTopic').on('click',function(){
+                $('.collectTopic').css('display','none');
+                $('.recentReply').css('display','none');
+                $('.recentTopic').css('display','block');
+            });
+
+            function appendCollect(data){
+                var html = '';
+                for(var i = 0 ; i < data.length ; i++ ){
+                    var reply = data[i];
+                    html+='<a href="/topic?id='+reply.id+'">'+
+                   '<div class="col-xs-12 row userReply collectTopic">'+
+                        '<object><a href="/user/'+reply.author.loginname +'">'+
+                            '<img src="'+reply.author.avatar_url+'" class="col-xs-3 img-responsive img-circle ">'+
+                       '</a></object>'+
+                        '<div class="col-xs-9 userReplyContent">'+
+                           '<div class="userReplyTitle">'+
+                                reply.title +
+                           '</div>'+
+                            '<div style="float:left">'+
+                                reply.author.loginname +
+                           ' </div>'+
+                            '<div style="float:right">'+
+                                '1分钟前'+
+                            '</div>'+
+                        '</div>'+
+                        '<hr style="height:2px;border:none;border-top:2px dotted #185598;" class="col-xs-10 col-xs-offset-1" />'+
+                    '</div>'+
+                '</a> ';
+                }
+                $(".userInformation").append(html);
+            }
+            //ajax加载话题收藏
+            (function(){
+                var ajaxUrl ='https://cnodejs.org/api/v1/topic_collect/<%= user.loginname %>';
+                $.ajax({
+                    type:'get',
+                    url : ajaxUrl,
+                    dataType:'json',
+                    success:function(data){
+                        if(data.data.length){
+                            appendCollect(data.data);
+                            console.log(data.data);
+                        } 
+                    }
+                });
+            }());
+            $("#collectTopic").on('click',function(){
+                $('.recentTopic').css('display','none');
+                $('.recentReply').css('display','none');
+                $('.collectTopic').css('display','block');
+            });
+
         });
     </script>
     </body>

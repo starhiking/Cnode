@@ -109,11 +109,23 @@ module.exports = (app)=>{
   });
 
 
-//bug在这
   app.get('/user/:name',(req,res)=>{
-    // console.log(req.params);
-    // let name = req.params.name;
-    res.render('user');
+    let name = req.params.name;
+    https.get('https://cnodejs.org/api/v1/user/'+name,(response)=>{
+      let data = null;
+      let html = '';
+      response.on('data',(chunk)=>{
+        response.setEncoding('utf8');
+        html+=chunk;
+      });
+      response.on('end',()=>{
+        data = JSON.parse(html);
+        if(data.success == true){
+          data.data.create_at = new Date(data.data.create_at).Format("yyyy-MM-dd");
+          res.render('user',{user:data.data}); 
+        }
+      });
+    });
   });
 
 

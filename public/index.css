@@ -188,3 +188,41 @@ img{
 code,.prettyprint{
     overflow: scroll;
 }
+.userInformation{
+    margin-top: 20%;
+}
+.authorText,.authorInformation{
+    text-align: center;
+    line-height: 1.4em;
+    margin-bottom: 2em;
+}
+.userButton{
+    margin-top: 2%;
+    text-align: center;
+}
+.userReply{
+    margin-top: 2%;
+    
+}
+.userReplyContent{
+    
+    vertical-align: middle;
+    margin-top: 2%;
+    
+}
+.userReplyTitle{
+    width: 100%;  /*必须设置宽度*/
+    overflow: hidden;  /*溢出隐藏*/
+    text-overflow: ellipsis; /*以省略号...显示*/
+    white-space: nowrap;  /*强制不换行*/
+    margin-bottom: 2%;
+}
+.recentReply{
+    display: block;
+}
+.recentTopic{
+    display: none;
+}
+.collectTopic{
+    display: none;
+}

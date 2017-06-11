@@ -21,8 +21,8 @@
         <div class="topicHead">
             <h3 class="topicTitle"><%= data.title %></h3>
             <div class="row topicAuthorInfo">
-                <img class="col-xs-2 img-responsive" src="<%= data.author.avatar_url %>">
-                <span class="topicAuthor col-xs-2"><%= data.author.loginname %></span>
+                <a href="/user/<%= data.author.loginname %>"><img class="col-xs-2 img-responsive" src="<%= data.author.avatar_url %>">
+                <span class="topicAuthor col-xs-2"><%= data.author.loginname %></span></a>
                 <div class="clo-xs-2"><span id="topicTime">11小时前</span></div>
             </div>
             <div class="topicContent">
@@ -35,7 +35,7 @@
                 <% for(var i = 0 ;i < data.replies.length; i++ ){ var reply = data.replies[i]; %>
                 <div class="replyContent">
                     <div class="row">
-                        <img class="col-xs-3 img-responsive img-circle replyAvatar" src="<%= reply.author.avatar_url %>">
+                        <a href="/user/<%= reply.author.loginname %>"><img class="col-xs-3 img-responsive img-circle replyAvatar" src="<%= reply.author.avatar_url %>"></a>
                         <div class="col-xs-6 replyInfo">
                             <strong><%= reply.author.loginname %></strong><br><span class="floor"><%- i+1 %>楼</span> &nbsp;11小时前
                         </div>

@@ -7,7 +7,7 @@
                 <span class="Title"><%= topic.title %></span>
               </div>
               <div class="contentFoot row ">
-                <img class="avatar col-xs-2 img-responsive img-circle" src="<%=topic.author.avatar_url%>">
+                <object><a href="/user/<%= topic.author.loginname %>"><img class="avatar col-xs-2 img-responsive img-circle" src="<%=topic.author.avatar_url%>"></a></object>
                 <div class="col-xs-7 CreateInfo">
                     <span class="Author"><%= topic.author.loginname %></span><br>
                     <span class="CreateTime">创建于：<%=topic.re_create_at%></span>
