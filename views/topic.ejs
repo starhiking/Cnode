@@ -23,7 +23,7 @@
             <div class="row topicAuthorInfo">
                 <a href="/user/<%= data.author.loginname %>"><img class="col-xs-2 img-responsive" src="<%= data.author.avatar_url %>">
                 <span class="topicAuthor col-xs-2"><%= data.author.loginname %></span></a>
-                <div class="clo-xs-2"><span id="topicTime">11小时前</span></div>
+                <div class="clo-xs-2"><span id="topicTime"><%= data.re_create_at_along %></span></div>
             </div>
             <div class="topicContent">
                 <%- data.content %>
@@ -37,7 +37,7 @@
                     <div class="row">
                         <a href="/user/<%= reply.author.loginname %>"><img class="col-xs-3 img-responsive img-circle replyAvatar" src="<%= reply.author.avatar_url %>"></a>
                         <div class="col-xs-6 replyInfo">
-                            <strong><%= reply.author.loginname %></strong><br><span class="floor"><%- i+1 %>楼</span> &nbsp;11小时前
+                            <strong><%= reply.author.loginname %></strong><br><span class="floor"><%- i+1 %>楼</span> &nbsp;<%= reply.re_create_at %>
                         </div>
                         <div class="col-xs-1 findMe">
                             <span class="glyphicon glyphicon-log-in " aria-hidden="true" >

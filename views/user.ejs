@@ -59,7 +59,7 @@
                             <%= reply.author.loginname %>
                         </div>
                         <div style="float:right">
-                            1分钟前
+                            <%= reply.re_last_reply_at %>
                         </div>
                     </div>
                     <hr style=" height:2px;border:none;border-top:2px dotted #185598;" class="col-xs-10 col-xs-offset-1" />
@@ -80,7 +80,7 @@
                                 <%= reply.author.loginname %>
                             </div>
                             <div style="float:right">
-                                1分钟前
+                                <%= reply.re_last_reply_at %>
                             </div>
                             
                         </div>
@@ -109,6 +109,10 @@
 
             function appendCollect(data){
                 var html = '';
+                for(var i = 0; i < data.length ; i++ ){
+                    var reply = data[i];
+                    reply.re_create_at = reply.create_at.substring(0,10);
+                }
                 for(var i = 0 ; i < data.length ; i++ ){
                     var reply = data[i];
                     html+='<a href="/topic?id='+reply.id+'">'+
@@ -124,7 +128,7 @@
                                 reply.author.loginname +
                            ' </div>'+
                             '<div style="float:right">'+
-                                '1分钟前'+
+                                reply.re_create_at+
                             '</div>'+
                         '</div>'+
                         '<hr style="height:2px;border:none;border-top:2px dotted #185598;" class="col-xs-10 col-xs-offset-1" />'+

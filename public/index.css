@@ -1,5 +1,6 @@
 body{
     background-color: #e1e1e1;
+    max-width: 99%;
 }
 #head{
     position: fixed;
