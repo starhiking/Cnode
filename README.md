@@ -1,10 +1,29 @@
 # Cnode 
-这是仿照cnode社区（https://cnodejs.org）做的一个web APP
 
-同步代码 （git@github.com:starhiking/Cnode.git）后
+# 2018-04-24 Update
+### Ps : I forgot add supervisor in dependencies before , which can always using dev pattern
 
-进入Cnode文件夹
+## Introduction
 
-npm install 安装依赖
+It`s a programme for mobile terminal. I have done some functions (Not perfect).
 
-npm start 运行即可
+
+## Steps To Install ( if you have install nodejs )
+
+### Step 1
+``` git clone https://github.com/starhiking/Cnode```
+
+### Step 2
+```cd Cnode && npm install```
+
+### Step 3
+```npm start```
+
+if exist error you can code     ```node ./bin/www```
+
+### Step 4
+open  ```localhost:3000```  in your browser
+
+
+
+
